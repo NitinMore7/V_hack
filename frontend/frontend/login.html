@@ -1,0 +1,94 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="login-page.css" />
+  <body>
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles
+        <h2 class="active">Sign In</h2>
+        <h2 class="inactive underlineHover">Sign Up</h2> -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+          <img src="./visa_logo.png" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Login Form -->
+        <form
+          id="loginForm"
+          name="myForm"
+          method="POST"
+          onsubmit="return validate()"
+        >
+          <input
+            type="text"
+            id="email"
+            class="fadeIn second"
+            name="email"
+            placeholder="login"
+          />
+          <input
+            type="password"
+            id="password"
+            class="fadeIn third"
+            name="password"
+            placeholder="password"
+          />
+          <input type="submit" class="fadeIn fourth" value="Log In" />
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          <a class="underlineHover" href="signup.html">Not A Member?Sign Up</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function(event) {
+          event.preventDefault();
+        });
+      function validate() {
+        var u = document.forms["myForm"]["email"].value;
+        var v = document.forms["myForm"]["password"].value;
+        if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(u)) {
+          alert("Enter a valid Email");
+          return false;
+        }
+        document.forms["myForm"].reset();
+        fetch("http://localhost:3000/api/association/login", {
+          method: "post",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+
+          //make sure to serialize your JSON body
+          body: JSON.stringify({
+            email: u,
+            password: v
+          })
+        })
+          .then(response => response.json())
+          .then(commits => {
+            console.log(commits);
+            if (
+              commits.name == null ||
+              commits.message == "Invalid Credentials"
+            ) {
+              alert("Invalid Credentials");
+            } else {
+              localStorage.setItem("token", commits.token);
+              window.location.replace("./index.html");
+            }
+          });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="drivers.css">
+    <title>Drivers</title>
+</head>
+
+<body>
+    <div>
+        <div class="left">
+            <img src="logo.jpg" alt="" />
+            <div>Truck Association</div>
+        </div>
+        <!-- Mid box for navbar -->
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="#" class="active">Drivers Details</a></li>
+                <li><a href="./truck.html">Truck Details</a></li>
+            </ul>
+        </div>
+
+        <!-- Right box for buttons -->
+        <div class="right">
+            <button class="btn" onclick="signOut()">Sign Out</button>
+        </div>
+        </header>
+
+        <table class="rwd-table">
+            <tr>
+                <th>ID</th>
+                <th>name</th>
+                <th>Email</th>
+                <th>Journey</th>
+            </tr>
+            <tr>
+                <td data-th="ID">1</td>
+                <td data-th="Name">Arun</td>
+                <td data-th="Email">arun@gmail.com</td>
+                <td data-th="Journey"><button class="button button1" onclick="location.href='journey.html';" >Start Journey</button></td>
+            </tr>
+            <tr>
+                <td data-th="ID">2</td>
+                <td data-th="Name">Nitin</td>
+                <td data-th="Email">nitin@gmail.com</td>
+                <td data-th="Journey"><button class="button button1" onclick="location.href='journey.html';" >Start Journey</button></td>
+            </tr>
+            <tr>
+                <td data-th="ID">3</td>
+                <td data-th="Name">Rahul</td>
+                <td data-th="Email">rahul@gmail.com</td>
+                <td data-th="Journey"><button class="button button1" onclick="location.href='journey.html';" >Start Journey</button></td>
+            </tr>
+            <tr>
+                <td data-th="ID">5</td>
+                <td data-th="Name">Kamalesh</td>
+                <td data-th="Email">kamalesh@gmail.com</td>
+                <td data-th="Journey">In Progress</td>
+            </tr>
+            <tr>
+                <td data-th="ID">6</td>
+                <td data-th="Name">Ezhil</td>
+                <td data-th="Email">ezhil@gmail.com</td>
+                <td data-th="Journey"><button class="button button1" onclick="location.href='journey.html';" >Start Journey</button></td>
+            </tr>
+            <tr>
+                <td data-th="ID">7</td>
+                <td data-th="Name">Jagan</td>
+                <td data-th="Email">jagan@gmail.com</td>
+                <td data-th="Journey">In Progress</td>
+            </tr>
+        </table>
+        <script>
+            function preloadFunc() {
+        if (localStorage.getItem("token") == null) {
+          alert("YOU MUST LOGIN FIRST");
+          window.location.replace("./login.html");
+        }
+      }
+      function signOut() {
+        localStorage.removeItem("token");
+        window.location.replace("./login.html");
+      }
+      window.onpaint = preloadFunc();
+        </script>
+</body>
+
+</html>

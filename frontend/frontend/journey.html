@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="journey.css" />
+  <script defer src="journey.js"></script>
+  <title>Journey</title>
+</head>
+
+<body>
+  <div class="left">
+    <img src="logo.jpg" alt="" />
+    <div>Truck Association</div>
+  </div>
+  <!-- Mid box for navbar -->
+
+  <!-- Right box for buttons -->
+  <div class="right">
+    <button class="btn" onclick="signOut()">Sign Out</button>
+  </div>
+  </header>
+  <h1 style="text-align: center;">Set Journey Details</h1>
+  <div class="container">
+    <form class="form" id="form" onsubmit="callApi()">
+      <div class="form-control">
+        <input type="text" placeholder="Start City" id="startcity" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+
+        <input type="text" placeholder="End City" id="endcity" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <input type="number" placeholder="petrol" id="petrol" min="1" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+        <input type="number" placeholder="Food" id="food" min="1" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+        <input type="number" placeholder="Miscellaneous" id="miscellaneous" min="1" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+      <button class="btn">Submit</button>
+      <!-- <input type="text" placeholder="start city" />
+            <input type="text" placeholder="end city" />
+            <input type="number" placeholder="amount provided in card" />
+            <input type="number" placeholder="spent on petrol" />
+            <input type="number" placeholder="spent on food" />
+            <input type="number" placeholder="miscellaneous" /> -->
+    </form>
+  </div>
+  <script>
+    function preloadFunc() {
+      if (localStorage.getItem("token") == null) {
+        alert("YOU MUST LOGIN FIRST");
+        window.location.replace("./login.html");
+      }
+    }
+    function signOut() {
+      localStorage.removeItem("token");
+      window.location.replace("./login.html");
+    }
+    window.onpaint = preloadFunc();
+    function callApi() {
+      const form = document.getElementById("form");
+      const startcity = document.getElementById("startcity").value;
+      const endcity = document.getElementById("endcity").value;
+      var petrol = document.getElementById("petrol").value;
+      var food = document.getElementById("food").value;
+      var miscellaneous = document.getElementById("miscellaneous").value;
+        if (startcity == "" || endcity=="" || amt=="" || food=="" || miscellaneous=="") {
+          alert("You have left some fields empty");
+          return false;
+        }
+        form.reset();
+      fetch("http://localhost:3000/api/merchant/pay", {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          payload: {
+            acquirerCountryCode: "356",
+            acquiringBin: "408972",
+            amount: "124.05",
+            businessApplicationId: "MP",
+            cardAcceptor: {
+              address: {
+                city: "KOLKATA",
+                country: "IN"
+              },
+              idCode: "CA-IDCode-77765",
+              name: "Visa Inc. USA-Foster City"
+            },
+            localTransactionDateTime: "2020-07-01T12:30:07",
+            purchaseIdentifier: {
+              type: "0",
+              referenceNumber: "REF_123456789123456789123"
+            },
+            recipientPrimaryAccountNumber: "4123640062698797",
+            retrievalReferenceNumber: "412770451035",
+            secondaryId: "123TEST",
+            senderAccountNumber: "4027290077881587",
+            senderName: "Jasper",
+            senderReference: "",
+            systemsTraceAuditNumber: "451035",
+            transactionCurrencyCode: "356",
+            merchantCategoryCode: "5812",
+            settlementServiceIndicator: "9"
+          }
+        })
+      })
+        .then(response => response.json())
+        .then(commits => console.log(commits));
+    }
+  </script>
+</body>
+
+</html>

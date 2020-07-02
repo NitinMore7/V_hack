@@ -1,0 +1,227 @@
+/* CSS Reset */
+
+body {
+  font-family: Montserrat, sans-serif;
+  color: white;
+  margin: 0px;
+  padding: 0px;
+  background-size: 100% 100%;
+  background: url("truck.webp");
+}
+
+.left {
+  display: inline-block;
+  /* border: 2px solid red; */
+  position: absolute;
+  left: 60px;
+  top: 20px;
+}
+
+.left img {
+  width: 65px;
+  border-radius: 10px;
+  /*filter: invert(100%);*/
+}
+
+.left div {
+  line-height: 19px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.mid {
+  display: block;
+  width: 61%;
+  margin: 29px auto;
+  /*border: 2px solid green;*/
+}
+
+.right {
+  position: absolute;
+  right: 34px;
+  top: 43px;
+  display: inline-block;
+  /* border: 2px solid yellow; */
+}
+
+.navbar {
+  display: inline-block;
+}
+
+.navbar li {
+  display: inline-block;
+  font-size: 25px;
+}
+
+.navbar li a {
+  color: white;
+  text-decoration: none;
+  padding: 34px 23px;
+}
+
+.navbar li a:hover,
+.navbar li a.active {
+  color: #dd5;
+}
+
+.btn {
+  font-family: Montserrat, sans-serif;
+  margin: 0px 9px;
+  background-color: black;
+  color: white;
+  padding: 4px 14px;
+  border: 2px solid grey;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(31, 30, 30);
+}
+
+.container {
+  border: 2px solid white;
+  margin: 71px 450px;
+  padding: 35px;
+  width: 33%;
+  border-radius: 28px;
+}
+
+.form-group input {
+  font-family: "Baloo Bhai", cursive;
+  text-align: center;
+  display: block;
+  width: 508px;
+  padding: 1px;
+  border: 2px solid black;
+  margin: 11px auto;
+  font-size: 25px;
+  border-radius: 8px;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+.container button {
+  display: block;
+  width: 74%;
+  margin: 20px auto;
+}
+.table-box {
+  margin: 50px auto;
+}
+
+.table-row {
+  display: table;
+  width: 80%;
+  margin: 10px auto;
+  font-family: sans-serif;
+  background: #f0f0f0;
+  padding: 12px 0;
+  color: white;
+  font-size: 13px;
+  box-shadow: 0 1px 4px 0px rgba(0, 0, 50, 0.3);
+}
+.table-head {
+  background: #f0f0f0;
+  box-shadow: 0 1px 4px 0px rgba(0, 0, 50, 0.3);
+  color: black;
+  font-weight: 600;
+}
+.table-head .table-cell {
+  border-right: none;
+}
+.table-cell {
+  display: table-cell;
+  width: 20%;
+  text-align: center;
+  padding: 4px 0;
+  border-right: 1px solid #d6d4d4;
+  vertical-align: middle;
+}
+.first-cell {
+  text-align: left;
+  padding-left: 10px;
+}
+.last-cell {
+  border-right: none;
+}
+a {
+  text-decoration: none;
+  color: #555;
+}
+
+.form {
+  padding: 0px 0px;
+}
+
+.form-control {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.form-control label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.form-control input {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+}
+
+.form-control input:focus {
+  outline: 0;
+  border-color: #777;
+}
+
+.form-control.success input {
+  border-color: #2ecc71;
+}
+
+.form-control.error input {
+  border-color: #e74c3c;
+}
+
+.form-control i {
+  visibility: hidden;
+  position: absolute;
+  top: 40px;
+  right: 10px;
+}
+
+.form-control.success i.fa-check-circle {
+  color: #2ecc71;
+  visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle {
+  color: #e74c3c;
+  visibility: visible;
+}
+
+.form-control small {
+  color: #e74c3c;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.form-control.error small {
+  visibility: visible;
+}
+
+@media only screen and (max-width: 600px) {
+  .table-row {
+    font-size: 11px;
+  }
+}

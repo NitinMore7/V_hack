@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="truck-page.css">
+    <title>Drivers</title>
+</head>
+
+<body>
+    <div>
+        <div class="left">
+            <img src="logo.jpg" alt="" />
+            <div>Truck Association</div>
+        </div>
+        <!-- Mid box for navbar -->
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="./index.html" >Home</a></li>
+                <li><a href="./drivers.html">Drivers Details</a></li>
+                <li><a href="#" class="active">Truck Details</a></li>
+            </ul>
+        </div>
+
+        <!-- Right box for buttons -->
+        <div class="right">
+            <button class="btn" onclick="signOut()">Sign Out</button>
+        </div>
+        </header>
+        <table class="rwd-table">
+            <tr>
+                <th>Truck ID</th>
+                <th>Number Plate</th>
+
+                <th>Driver ID</th>
+            </tr>
+            <tr>
+                <td data-th="Truck Id">12345</td>
+                <td data-th="Number Plate">DL 1Y A3550</td>
+
+                <td data-th="Driver ID">45</td>
+            </tr>
+            <tr>
+                <td data-th="Truck Id">12346</td>
+                <td data-th="Number Plate">DL 1Y A3551</td>
+
+                <td data-th="Driver ID">15</td>
+            </tr>
+            <tr>
+                <td data-th="Truck Id">12347</td>
+                <td data-th="Number Plate">DL 1Y A3552</td>
+
+                <td data-th="Driver ID">0</td>
+            </tr>
+            <tr>
+                <td data-th="Truck Id">12348</td>
+                <td data-th="Number Plate">DL 1Y A3553</td>
+
+                <td data-th="Driver ID">10</td>
+            </tr>
+            <tr>
+                <td data-th="Truck Id">12349</td>
+                <td data-th="Number Plate">DL 1Y A3554</td>
+
+                <td data-th="Driver ID">99</td>
+            </tr>
+            <tr>
+                <td data-th="Truck Id">12350</td>
+                <td data-th="Number Plate">DL 1Y A3555</td>
+
+                <td data-th="Driver ID">22</td>
+            </tr>
+        </table>
+        <script>
+            function preloadFunc() {
+        if (localStorage.getItem("token") == null) {
+          alert("YOU MUST LOGIN FIRST");
+          window.location.replace("./login.html");
+        }
+      }
+      function signOut() {
+        localStorage.removeItem("token");
+        window.location.replace("./login.html");
+      }
+      window.onpaint = preloadFunc();
+        </script>
+</body>
+
+</html>
